@@ -30,11 +30,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		E59ECC0E2E74D1BE00523A61 /* Movies */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Movies;
-			sourceTree = "<group>";
-		};
 		E59ECC1F2E74D1BF00523A61 /* MoviesTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = MoviesTests;
@@ -43,6 +38,11 @@
 		E59ECC292E74D1BF00523A61 /* MoviesUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = MoviesUITests;
+			sourceTree = "<group>";
+		};
+		E59ECC6C2E74DD1700523A61 /* Movies */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Movies;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,7 +75,7 @@
 		E59ECC032E74D1BE00523A61 = {
 			isa = PBXGroup;
 			children = (
-				E59ECC0E2E74D1BE00523A61 /* Movies */,
+				E59ECC6C2E74DD1700523A61 /* Movies */,
 				E59ECC1F2E74D1BF00523A61 /* MoviesTests */,
 				E59ECC292E74D1BF00523A61 /* MoviesUITests */,
 				E59ECC0D2E74D1BE00523A61 /* Products */,
@@ -108,7 +108,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				E59ECC0E2E74D1BE00523A61 /* Movies */,
+				E59ECC6C2E74DD1700523A61 /* Movies */,
 			);
 			name = Movies;
 			packageProductDependencies = (
