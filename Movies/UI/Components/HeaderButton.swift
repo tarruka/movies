@@ -10,7 +10,7 @@ import SwiftUI
 struct HeaderButton: View {
   
   var icon: Image
-  var title: String
+  var title: LocalizedStringKey
   var iconFirst: Bool = true
   var onTapped: () -> Void
   

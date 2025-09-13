@@ -23,7 +23,7 @@ struct MovieCard: View {
             .accessibilityIdentifier("year")
         Spacer()
         Image(systemName: "clock")
-        Text("ID: \(movie.imdbID)")
+        Text("id_label \(movie.imdbID)")
             .accessibilityIdentifier("imdb")
       }
      

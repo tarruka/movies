@@ -17,10 +17,23 @@ struct HomeView: View {
   var body: some View {
     NavigationView {
       VStack {
-        HomeHeaderView(query: $viewModel.query)
+        HomeHeaderView(
+          query: $viewModel.query,
+          onSortTapped: {
+            viewModel.sort()
+          },
+          onOrderTapped: {
+            viewModel.toggleOrder()
+          },
+          onClearTapped: {
+            Task {
+              await viewModel.clearSort()
+            }
+          }
+        )
         ScrollView {
           LazyVStack {
-            ForEach(viewModel.movies) { movie in
+            ForEach(viewModel.filteredMovies) { movie in
               MovieCard(movie: movie)
                 .onAppear {
                   Task {
@@ -48,8 +61,10 @@ struct HomeView: View {
       .task {
         await viewModel.loadInitialMovies()
       }
-      .navigationTitle("Movie List")
+      .navigationTitle("movie_list")
+      .navigationBarTitleDisplayMode(.inline)
       .accessibilityIdentifier("header-title")
     }
   }
 }
+

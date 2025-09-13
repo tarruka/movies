@@ -9,6 +9,9 @@ import SwiftUI
 
 struct HomeHeaderView: View {
   @Binding var query: String
+  var onSortTapped: () -> Void
+  var onOrderTapped: () -> Void
+  var onClearTapped: () -> Void
   
   var body: some View {
     VStack(spacing: 10) {
@@ -16,28 +19,22 @@ struct HomeHeaderView: View {
       HStack {
         HeaderButton(
           icon: Image(systemName: "arrow.up.and.down.text.horizontal"),
-          title: "Sort",
-          onTapped: {
-            //
-          }
+          title: "sort_label".localized,
+          onTapped: onSortTapped
         )
         .frame(maxWidth: .infinity)
 
         HeaderButton(
           icon: Image(systemName: "arrow.down"),
-          title: "Order",
+          title: "order_label".localized,
           iconFirst: false,
-          onTapped: {
-            //
-          }
+          onTapped: onOrderTapped
         )
         .frame(maxWidth: .infinity)
         HeaderButton(
           icon: Image(systemName: "arrow.trianglehead.counterclockwise"),
-          title: "Clear",
-          onTapped: {
-            //
-          }
+          title: "clear_label".localized,
+          onTapped: onClearTapped
         )
         .frame(maxWidth: .infinity)
       }

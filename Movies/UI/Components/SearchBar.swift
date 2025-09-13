@@ -17,7 +17,7 @@ struct SearchBar: View {
         .foregroundColor(.secondary)
       TextField(
         text: $query,
-        prompt: Text("Search Movies...").foregroundColor(.secondary)
+        prompt: Text("search_movies_placeholder").foregroundColor(.secondary)
       ) { }
       .foregroundColor(.primary)
     }
