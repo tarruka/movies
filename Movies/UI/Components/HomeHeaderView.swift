@@ -20,27 +20,27 @@ struct HomeHeaderView: View {
         HeaderButton(
           icon: Image(systemName: "arrow.up.and.down.text.horizontal"),
           title: "sort_label".localized,
-          onTapped: onSortTapped
+          onTapped: onSortTapped,
+          identifier: "sortToggleButton"
         )
         .frame(maxWidth: .infinity)
-        .accessibilityIdentifier("sortToggleButton")
 
         HeaderButton(
           icon: Image(systemName: "arrow.down"),
           title: "order_label".localized,
           iconFirst: false,
-          onTapped: onOrderTapped
+          onTapped: onOrderTapped,
+          identifier: "orderToggleButton"
         )
         .frame(maxWidth: .infinity)
-        .accessibilityIdentifier("orderToggleButton")
         
         HeaderButton(
           icon: Image(systemName: "arrow.trianglehead.counterclockwise"),
           title: "clear_label".localized,
-          onTapped: onClearTapped
+          onTapped: onClearTapped,
+          identifier: "clearSortButton"
         )
         .frame(maxWidth: .infinity)
-        .accessibilityIdentifier("clearSortButton")
       }
     }
     .padding(.horizontal, 10)

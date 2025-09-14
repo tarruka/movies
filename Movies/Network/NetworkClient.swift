@@ -6,7 +6,11 @@
 //
 import Foundation
 
-final class NetworkClient {
+protocol NetworkClientProtocol {
+    func request<T: Decodable>(_ endpoint: Endpoint, as type: T.Type) async throws -> T
+}
+
+final class NetworkClient: NetworkClientProtocol {
   func request<T: Decodable>(
     _ endpoint: Endpoint,
     as type: T.Type

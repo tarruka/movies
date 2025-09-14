@@ -8,36 +8,50 @@
 import XCTest
 
 final class MoviesUITests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    @MainActor
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
+  
+  var app: XCUIApplication!
+  
+  override func setUpWithError() throws {
+    // Stop immediately when a failure occurs
+    continueAfterFailure = false
+    app = XCUIApplication()
+    app.launch()
+    print(app.debugDescription)
+  }
+  
+  // MARK: - Movie List Rendering
+  
+  func test_movieListRendersItems() throws {
+    // Wait until the movie list exists
+    let movieList = app.collectionViews["movie-list"]
+    XCTAssertTrue(movieList.waitForExistence(timeout: 5))
+    
+    // Verify that at least one movie item is rendered
+    let firstItem = app.staticTexts["name"].firstMatch
+    XCTAssertTrue(firstItem.waitForExistence(timeout: 5))
+    
+    // Check that required labels exist inside the movie item
+    XCTAssertTrue(firstItem.exists)
+    XCTAssertTrue(app.staticTexts["year"].exists)
+    XCTAssertTrue(app.staticTexts["imdb"].exists)
+  }
+  
+  // MARK: - Sort Buttons
+  
+  func test_sortButtonsExist() throws {
+    // Check that all sort-related buttons exist
+    let sortButton = app.buttons["sortToggleButton"]
+    let orderButton = app.buttons["orderToggleButton"]
+    let clearButton = app.buttons["clearSortButton"]
+    
+    XCTAssertTrue(sortButton.waitForExistence(timeout: 5))
+    XCTAssertTrue(orderButton.exists)
+    XCTAssertTrue(clearButton.exists)
+  }
+  
+  func test_tapSortButton() throws {
+    let sortButton = app.buttons["sortToggleButton"]
+    XCTAssertTrue(sortButton.waitForExistence(timeout: 5))
+    sortButton.tap()
+  }
 }

@@ -37,6 +37,7 @@ struct MovieCard: View {
           Color(UIColor.systemBackground).cornerRadius(16)
         )
     )
-    .accessibilityIdentifier("movies-item")
+    .accessibilityElement(children: .combine)
+    .accessibilityIdentifier("movie-item")
   }
 }

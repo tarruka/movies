@@ -60,8 +60,8 @@ struct HomeView: View {
         .listStyle(.plain)
         .scrollIndicators(.hidden)
         .scrollContentBackground(.hidden)
-        .accessibilityIdentifier("movie-list")
         .padding(.horizontal, 10)
+        .accessibilityIdentifier("movie-list")
       }
       .background(Color(UIColor.systemBackground).ignoresSafeArea())
       .overlay(
@@ -91,7 +91,6 @@ struct HomeView: View {
         await viewModel.loadInitialMovies()
       }
       .navigationTitle("movie_list")
-      .accessibilityIdentifier("header-title")
       .navigationBarTitleDisplayMode(.inline)
     }
   }

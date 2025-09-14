@@ -27,10 +27,14 @@ class HomeViewModel: ObservableObject {
   @Published var movieStates: [String: Bool] = [:]
   
   var cancellables = Set<AnyCancellable>()
-  private let client = NetworkClient()
+  private let client: NetworkClientProtocol
   private var currentPage = 1
   private var totalPages = 1
 
+  init(client: NetworkClientProtocol = NetworkClient()) {
+    self.client = client
+  }
+  
   func loadInitialMovies() async {
     currentPage = 1
     movies = []
@@ -40,7 +44,8 @@ class HomeViewModel: ObservableObject {
   func loadMoreIfNeeded(currentItem movie: Movie?) async {
     guard let movie = movie else { return }
     let thresholdIndex = movies.index(movies.endIndex, offsetBy: -2)
-    if movies.firstIndex(where: { $0.id == movie.id }) == thresholdIndex {
+    if let index = movies.firstIndex(where: { $0.id == movie.id }),
+       index >= thresholdIndex {
       await loadNextPage()
     }
   }
@@ -76,7 +81,7 @@ class HomeViewModel: ObservableObject {
     }
   }
   
-  private func applySorting() {
+  func applySorting() {
     guard let field = sortField else { return }
 
     switch field {

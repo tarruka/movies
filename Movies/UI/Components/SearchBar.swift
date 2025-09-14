@@ -19,8 +19,8 @@ struct SearchBar: View {
         text: $query,
         prompt: Text("search_movies_placeholder").foregroundColor(.secondary)
       ) { }
+      .accessibilityIdentifier("search-input")
       .foregroundColor(.primary)
-      .accessibilityIdentifier("search-input") 
     }
     .padding(.horizontal)
     .padding(.vertical, 5)

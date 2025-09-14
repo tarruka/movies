@@ -13,6 +13,7 @@ struct HeaderButton: View {
   var title: LocalizedStringKey
   var iconFirst: Bool = true
   var onTapped: () -> Void
+  var identifier: String? = nil
   
   var body: some View {
     Button {
@@ -35,6 +36,9 @@ struct HeaderButton: View {
               .stroke(Color(UIColor.separator), lineWidth: 1)
           )
       )
-    }.foregroundColor(.primary)
+    }
+    .accessibilityAddTraits(.isButton)
+    .accessibilityIdentifier(identifier ?? "")
+    .foregroundColor(.primary)
   }
 }
