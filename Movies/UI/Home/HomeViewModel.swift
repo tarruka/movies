@@ -20,6 +20,7 @@ class HomeViewModel: ObservableObject {
   @Published var isLoading = false
   @Published var isLoadingMore = false
   @Published var query = ""
+  @Published var errorMessage: String?
   @Published var sortField: SortField? = nil
   @Published var sortOrder: SortOrder = .ascending
   var cancellables = Set<AnyCancellable>()
@@ -57,15 +58,18 @@ class HomeViewModel: ObservableObject {
       isLoading = false
       isLoadingMore = false
     }
-
     do {
-      let response = try await client.request(MoviesEndpoint.movies(page: page),
-                                              as: MoviesResponse.self)
-      totalPages = response.totalPages
-      movies.append(contentsOf: response.data)
-      applySorting()
+        let response = try await client.request(
+          MoviesEndpoint.movies(page: page),
+          as: MoviesResponse.self
+        )
+        totalPages = response.totalPages
+        movies.append(contentsOf: response.data)
+        applySorting()
+    } catch let error as NetworkError {
+        errorMessage = error.userMessage
     } catch {
-      print("Error: \(error)")
+        errorMessage = "Unexpected error: \(error.localizedDescription)"
     }
   }
   

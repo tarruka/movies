@@ -7,22 +7,27 @@
 import Foundation
 
 enum MoviesEndpoint: Endpoint {
-    case movies(page: Int)
+  case movies(page: Int)
 
-    var baseURL: String { "https://jsonmock.hackerrank.com" }
+  var baseURL: String { "https://jsonmock.hackerrank.com" }
 
-    var path: String {
-        switch self {
-        case .movies: return "/api/moviesdata"
-        }
+  var path: String {
+    switch self {
+    case .movies: return "/api/moviesdata"
     }
+  }
 
-    var queryItems: [URLQueryItem] {
-        switch self {
-        case .movies(let page):
-            return [URLQueryItem(name: "page", value: "\(page)")]
-        }
+  var queryItems: [URLQueryItem] {
+    switch self {
+    case .movies(let page):
+      return [
+        URLQueryItem(
+          name: "page",
+          value: "\(page)"
+        )
+      ]
     }
+  }
 
-    var method: String { "GET" }
+  var method: String { "GET" }
 }

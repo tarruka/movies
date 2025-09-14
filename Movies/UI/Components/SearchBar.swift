@@ -20,6 +20,7 @@ struct SearchBar: View {
         prompt: Text("search_movies_placeholder").foregroundColor(.secondary)
       ) { }
       .foregroundColor(.primary)
+      .accessibilityIdentifier("search-input") 
     }
     .padding(.horizontal)
     .padding(.vertical, 5)

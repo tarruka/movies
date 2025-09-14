@@ -23,6 +23,7 @@ struct HomeHeaderView: View {
           onTapped: onSortTapped
         )
         .frame(maxWidth: .infinity)
+        .accessibilityIdentifier("sortToggleButton")
 
         HeaderButton(
           icon: Image(systemName: "arrow.down"),
@@ -31,15 +32,18 @@ struct HomeHeaderView: View {
           onTapped: onOrderTapped
         )
         .frame(maxWidth: .infinity)
+        .accessibilityIdentifier("orderToggleButton")
+        
         HeaderButton(
           icon: Image(systemName: "arrow.trianglehead.counterclockwise"),
           title: "clear_label".localized,
           onTapped: onClearTapped
         )
         .frame(maxWidth: .infinity)
+        .accessibilityIdentifier("clearSortButton")
       }
     }
-    .padding(.horizontal)
+    .padding(.horizontal, 10)
     .background(
       LinearGradient(
         colors: [
