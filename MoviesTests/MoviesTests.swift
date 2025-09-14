@@ -49,8 +49,8 @@ final class MoviesTests: XCTestCase {
     let viewModel = await HomeViewModel(client: NetworkClientMock())
     await MainActor.run {
       viewModel.movies = movies
-      viewModel.sortField = .title
-      viewModel.sortOrder = .ascending
+      viewModel.sortType = .title
+      viewModel.orderType = .ascending
       viewModel.applySorting()
       
       XCTAssertEqual(viewModel.movies.first?.title, "Apple")
@@ -66,8 +66,8 @@ final class MoviesTests: XCTestCase {
     let viewModel = await HomeViewModel(client: NetworkClientMock())
     await MainActor.run {
       viewModel.movies = movies
-      viewModel.sortField = .title
-      viewModel.sortOrder = .descending
+      viewModel.sortType = .title
+      viewModel.orderType = .descending
       viewModel.applySorting()
       
       XCTAssertEqual(viewModel.movies.first?.title, "Zebra")
@@ -83,8 +83,8 @@ final class MoviesTests: XCTestCase {
     let viewModel = await HomeViewModel(client: NetworkClientMock())
     await MainActor.run {
       viewModel.movies = movies
-      viewModel.sortField = .year
-      viewModel.sortOrder = .ascending
+      viewModel.sortType = .year
+      viewModel.orderType = .ascending
       viewModel.applySorting()
       
       XCTAssertEqual(viewModel.movies.first?.year, 1980)
@@ -100,8 +100,8 @@ final class MoviesTests: XCTestCase {
     let viewModel = await HomeViewModel(client: NetworkClientMock())
     await MainActor.run {
       viewModel.movies = movies
-      viewModel.sortField = .year
-      viewModel.sortOrder = .descending
+      viewModel.sortType = .year
+      viewModel.orderType = .descending
       viewModel.applySorting()
       
       XCTAssertEqual(viewModel.movies.first?.year, 2020)

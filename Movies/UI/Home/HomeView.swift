@@ -20,6 +20,8 @@ struct HomeView: View {
       VStack {
         HomeHeaderView(
           query: $viewModel.query,
+          sortType: viewModel.sortType,
+          orderType: viewModel.orderType,
           onSortTapped: {
             viewModel.sort()
           },

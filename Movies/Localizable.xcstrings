@@ -4,23 +4,6 @@
     "%lld" : {
 
     },
-    "clear_label" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clear"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Limpiar"
-          }
-        }
-      }
-    },
     "id_label %@" : {
       "localizations" : {
         "en" : {
@@ -83,6 +66,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quitar"
+          }
+        }
+      }
+    },
+    "reset_label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Resetear"
           }
         }
       }

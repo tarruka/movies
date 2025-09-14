@@ -12,7 +12,6 @@ final class MoviesUITests: XCTestCase {
   var app: XCUIApplication!
   
   override func setUpWithError() throws {
-    // Stop immediately when a failure occurs
     continueAfterFailure = false
     app = XCUIApplication()
     app.launch()

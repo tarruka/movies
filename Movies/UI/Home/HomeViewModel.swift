@@ -21,8 +21,8 @@ class HomeViewModel: ObservableObject {
   @Published var isLoadingMore = false
   @Published var query = ""
   @Published var errorMessage: String?
-  @Published var sortField: SortField? = nil
-  @Published var sortOrder: SortOrder = .ascending
+  @Published var sortType: SortType? = nil
+  @Published var orderType: OrderType? = nil
   
   @Published var movieStates: [String: Bool] = [:]
   
@@ -82,18 +82,18 @@ class HomeViewModel: ObservableObject {
   }
   
   func applySorting() {
-    guard let field = sortField else { return }
+    guard let field = sortType else { return }
 
     switch field {
     case .title:
       movies.sort { lhs, rhs in
-        sortOrder == .ascending
+        orderType == .ascending
         ? lhs.title.localizedCaseInsensitiveCompare(rhs.title) == .orderedAscending
         : lhs.title.localizedCaseInsensitiveCompare(rhs.title) == .orderedDescending
       }
     case .year:
       movies.sort { lhs, rhs in
-        sortOrder == .ascending
+        orderType == .ascending
         ? lhs.year < rhs.year
         : lhs.year > rhs.year
       }
@@ -101,19 +101,19 @@ class HomeViewModel: ObservableObject {
   }
   
   func sort() {
-    sortField = sortField == .year ? .title : .year
+    sortType = sortType == .year ? .title : .year
     applySorting()
   }
 
   func toggleOrder() {
-    sortOrder = (sortOrder == .ascending) ? .descending : .ascending
+    orderType = orderType == .ascending ? .descending : .ascending
     applySorting()
   }
 
   func clearSort() async {
     query = ""
-    sortField = nil
-    sortOrder = .ascending
+    sortType = nil
+    orderType = nil
     await loadInitialMovies()
   }
   
