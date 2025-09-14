@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
   @ObservedObject private var viewModel: HomeViewModel
+  @EnvironmentObject private var navigator: Navigator
 
   init(viewModel: HomeViewModel) {
     self.viewModel = viewModel
@@ -35,19 +36,16 @@ struct HomeView: View {
         List {
           ForEach(viewModel.filteredMovies) { movie in
             MovieCard(movie: movie)
-              .onAppear {
-                Task {
-                  await viewModel.loadMoreIfNeeded(currentItem: movie)
-                }
+              .onTapGesture {
+                navigator.push(.movieDetail(movie))
               }
-              .listRowSeparator(.hidden)
               .listRowInsets(EdgeInsets(
-                top: 0,
-                leading: 0,
-                bottom: 10,
-                trailing: 0
+                top: 0, leading: 0, bottom: 10, trailing: 0
               ))
               .listRowBackground(Color.clear)
+              .onAppear {
+                Task { await viewModel.loadMoreIfNeeded(currentItem: movie) }
+              }
           }
 
           if viewModel.isLoadingMore {

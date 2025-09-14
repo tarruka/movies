@@ -23,6 +23,9 @@ class HomeViewModel: ObservableObject {
   @Published var errorMessage: String?
   @Published var sortField: SortField? = nil
   @Published var sortOrder: SortOrder = .ascending
+  
+  @Published var movieStates: [String: Bool] = [:]
+  
   var cancellables = Set<AnyCancellable>()
   private let client = NetworkClient()
   private var currentPage = 1
@@ -107,5 +110,13 @@ class HomeViewModel: ObservableObject {
     sortField = nil
     sortOrder = .ascending
     await loadInitialMovies()
+  }
+  
+  func toggleState(for movie: Movie) {
+      movieStates[movie.imdbID] = !(movieStates[movie.imdbID] ?? false)
+  }
+
+  func isSelected(_ movie: Movie) -> Bool {
+      movieStates[movie.imdbID] ?? false
   }
 }

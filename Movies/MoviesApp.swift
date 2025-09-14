@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct MoviesApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  @StateObject private var movieStateManager = MovieStateManager()
+    
+  var body: some Scene {
+    WindowGroup {
+      NavigatorView {
+        HomeView(viewModel: HomeViewModel())
+      }
+      .environmentObject(movieStateManager)
     }
+  }
 }

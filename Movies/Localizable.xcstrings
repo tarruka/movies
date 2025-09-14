@@ -70,6 +70,23 @@
         }
       }
     },
+    "remove_label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitar"
+          }
+        }
+      }
+    },
     "search_movies_placeholder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -83,6 +100,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Buscar Películas…"
+          }
+        }
+      }
+    },
+    "select_label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Seleccionar"
           }
         }
       }
